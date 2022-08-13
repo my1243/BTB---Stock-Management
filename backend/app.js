@@ -6,6 +6,8 @@ require("./db/conn");
 
 
 const User = require("./models/reg");
+const Favourite = require("./models/fav");
+const Todo = require("./models/todo");
 app.use(express.json());
 app.use(require("./routers/auth"));
 
