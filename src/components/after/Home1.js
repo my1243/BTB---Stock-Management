@@ -6,14 +6,6 @@ import Hello from "./Hello";
 import TradeView from "./TradingView";
 import Watchlist from "./WatchList";
 
-const item = [
-    { name: "apple" },
-    { name: "apple3" },
-    { name: "orange" },
-    { name: "orange3" },
-    { name: "pear" },
-    { name: "pear1" },
-]
 
 const Home1 = () => {
     const [companySym, setCompanySym] = useState("");
