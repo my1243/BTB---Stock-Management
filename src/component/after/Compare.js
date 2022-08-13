@@ -1,9 +1,11 @@
 import React from "react";
 import LineChart from "./Chartcomp";
+import Navbar1 from "./Navbar";
 
 const Compare = () => {
     return(
         <>
+            <Navbar1/>
             <div className="flex p-4">
                 {
                     [...Array(3)].map((_,idx) => {
