@@ -9,7 +9,8 @@ const Second = () => {
             Get The Most Out Of Your Investments
           </h1>
           <div class="flex flex-col md:flex-row mt-12 gap-x-12">
-            <div class="bg-gray-50 p-12 rounded-[2rem] md:w-2/5 shadow-lg flex flex-col items-start">
+          <div className="relative z-50 overflow-hidden bg-gray-50 p-12 rounded-[2rem] md:w-2/5 shadow-lg flex flex-col items-start">
+            <div className="">
               <h2 class="sm:text-3xl text-2xl font-medium text-gray-900 mt-4 mb-4">
                 Unlimited Portfolio Accounts
               </h2>
@@ -32,7 +33,15 @@ const Second = () => {
                 </svg>
               </a>
             </div>
-            <div class="p-12 md:w-3/5 rounded-[2rem] bg-gray-50 shadow-lg flex flex-col items-start">
+            <div className="absolute z-0 -bottom-7 right-4">
+                <div className="h-28 w-28 rotate-[30deg] bg-lime-400 rounded-2xl"></div>
+            </div>
+            <div className="absolute z-0 -bottom-7 right-0">
+                <div className="h-28 w-28 rotate-[50deg] bg-pink-400 rounded-2xl"></div>
+            </div>
+            </div>
+            <div className="relative overflow-hidden p-12 md:w-3/5 rounded-[2rem] bg-gray-50 shadow-lg flex flex-col items-start">
+                <div class="">
               <h2 class="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">
                 Full Analytics in Your App
               </h2>
@@ -54,7 +63,11 @@ const Second = () => {
                   <path d="M12 5l7 7-7 7"></path>
                 </svg>
               </a>
-            </div>
+                </div>
+                <div className="absolute -right-10 -bottom-12">
+                    <div className="h-56 w-56 rounded-full border-[12px] border-lime-400 flex items-center justify-center text-pink-400 text-8xl"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                </div>
+          </div>
           </div>
         </div>
       </section>
