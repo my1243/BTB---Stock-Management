@@ -1,70 +1,64 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Stock-Management
 
-## Available Scripts
+The intention to make this project is to spreade awareness for 
+ stock-market to share holders or investors. To make this project
+ more attractive and colourfull we are using REACT App
+  as a frontend, Node js as a backend, mondoDB as a 
+  database and Tailwind as a css.
 
-In the project directory, you can run:
+  
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Here we use these technical components :
 
-### `npm test`
+<img src="https://img.shields.io/badge/React-v18.1.0-brightgreen">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="https://img.shields.io/badge/Node-v16.15.0-yellow">
+<img src="https://img.shields.io/badge/Tailwind-v3.0.24-blue" alt="ruby version">
+<img src="https://img.shields.io/badge/Mongodb-v12.2.0-orange">
+<img src="https://img.shields.io/badge/Express-4.18.1-lightgrey">
 
-### `npm run build`
+**Client:** React,  TailwindCSS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Server:** Node, Express, MongoDB
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment
 
-### `npm run eject`
+To make REACT App use this commands
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+  npm run deploy
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+And then after you should write your code by changing directory. for set-up Tailwind.css use this command
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm install -D tailwindcss postcss autoprefixer
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+npx tailwind init -p
+```
+To use database we have choosen Mongodb by installing "mongoose"
+and "express".
 
-## Learn More
+# MondoDB Functionality : 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+For mongoDB we are using various collections like users, favusers,
+todo for modifications 
+through different schemas. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Here for signup and login data we use user collection for storing data and for
+selected stocks as favourite stock we use favusers collection,
+for todo list we use todo collection.
 
-### Code Splitting
+If user will signup through their data it will store in users collection and
+if user will try to login data will be search in user collection 
+and give response according to the conditions like email and password
+must be match to login.
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
