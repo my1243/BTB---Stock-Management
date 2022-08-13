@@ -19,7 +19,32 @@ const Model3 = () => {
         setuser({ ...user, [name]: value })
     }
 
-    const [record, setrecord] = useState([]);
+    const [record, setrecord] = useState([
+        {
+            Sharename: "MRF Ltd.",
+            quantity: "43",
+            DateOfPurchase: "24/07/2022",
+            Rate: "37.14",
+            UpperLimit: "60",
+            LowerLimit: "30"
+        },
+        {
+            Sharename: "TATA STEELS",
+            quantity: "200",
+            DateOfPurchase: "19/06/2022",
+            Rate: "352.21",
+            UpperLimit: "400",
+            LowerLimit: "330"
+        },
+        {
+            Sharename: "ADANI WILMAR Ltd",
+            quantity: "150",
+            DateOfPurchase: "29/06/2022",
+            Rate: "678.34",
+            UpperLimit: "700",
+            LowerLimit: "640"
+        }
+    ]);
 
     const handleSubmit = (e) => {
         console.log("submitted");
