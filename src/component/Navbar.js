@@ -28,7 +28,7 @@ export default function Navbar() {
       window.alert("Invalid details");
     } else {
       window.alert("Login successfully");
-      window.location = "/favourite";
+      window.location = "/portfolio";
     }
   }
 
@@ -67,7 +67,7 @@ const postdata = async (ev) => {
         } else {
             window.alert("data stored hiii successfully");
             console.log("data stored successfully");
-            window.location = "/favourite";
+            window.location = "/portfolio";
         }
     }
 }
@@ -254,22 +254,11 @@ const postdata = async (ev) => {
           </div>
         </div>
       )}
-    <nav className="shodow-md w-full sticky top-0 left-0 z-50 bg-white border-b-2">
+    <nav className="shodow-md w-full sticky top-0 left-0 z-[100] bg-white border-b-2">
       <div className="md:flex items-center justify-between py-2 md:px-10 px-4">
         {console.log(location.pathname)}
-        <Link to={"./"} class="flex title-font font-bold items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            class="w-10 h-10 text-white p-2 bg-green-500 rounded-full"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
+        <Link to={"/"} class="flex title-font font-bold items-center">
+          <img src="./logo.jpeg" className="w-10 h-10"></img>
           <span class="ml-3 text-xl">Stock Decode</span>
         </Link>
 
