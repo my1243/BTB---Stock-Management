@@ -5,11 +5,9 @@ The intention to make this project is to spreade awareness for
  stock-market to share holders or investors. To make this project
  more attractive and colourfull we are using REACT App
   as a frontend, Node js as a backend, mondoDB as a 
-  database and Tailwind as a css.
+  database and Tailwind as a css. We also tried to make website responsive.
 
   
-
-
 ## Tech Stack
 
 Here we use these technical components :
@@ -60,5 +58,6 @@ and give response according to the conditions like email and password
 must be match to login.
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](./public/ss1.png)
+![App Screenshot](./public/ss2.png)
 
