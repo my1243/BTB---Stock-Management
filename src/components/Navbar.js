@@ -65,7 +65,7 @@ const postdata = async (ev) => {
             window.alert("Invalid data");
             console.log("Invalid data");
         } else {
-            window.alert("data stored hiii successfully");
+            window.alert("Data stored successfully");
             console.log("data stored successfully");
             window.location = "/portfolio";
         }
