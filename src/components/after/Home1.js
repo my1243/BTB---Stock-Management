@@ -42,9 +42,9 @@ const Home1 = () => {
         </div>
           <div className="flex flex-row items-center justify-center">
             <div className="h-12 w-12 rounded-full overflow-hidden m-2"><img src="../avatar.jpg" /></div>
-            <li className="dropdown">
+            <li className="dropdown -mr-16">
             <div className="mr-24 hover:cursor-pointer">
-              <h1 className="font-medium text-md">Barly Vallendito <i class="fa-solid fa-caret-down ml-12 mt-5 "></i></h1>
+              <h1 className="font-medium text-md">Barly Vallendito <i class="fa-solid fa-caret-down ml-12 mt-5 -mr-10 "></i></h1>
               <h3 className="font-medium text-slate-600 text-sm">barleyvallen@gmail.com   </h3>
             </div>
             
