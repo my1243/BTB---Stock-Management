@@ -111,7 +111,7 @@ const Favourites = () => {
   return (
     <>
       {console.log(colorpicker())}
-      <div className="max-w-[80vw] rounded-3xl my-2">
+      <div className="max-w-[80vw] rounded-3xl my-2 swip">
         <Swiper
           slidesPerView={"5"}
           autoplay={{
