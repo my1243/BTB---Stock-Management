@@ -43,8 +43,8 @@ const Home1 = () => {
         <div className="flex flex-row items-center justify-center">
             <div className="h-12 w-12 rounded-full overflow-hidden m-2"><img src="../avatar.jpg"/></div>
             <div>
-                <h1 className="font-medium text-md">Barly Vallendito</h1>
-                <h3 className="font-medium text-slate-600 text-sm">barleyvallen@gmail.com</h3>
+                <h1 className="font-medium text-md">Mihir Yarra</h1>
+                <h3 className="font-medium text-slate-600 text-sm">mihiryarra@gmail.com</h3>
             </div>
             <div className="mx-10">
               <button className="inline-flex items-center text-slate-900 bg-gray-100 border-0 py-1 px-3 focus:outline-none rounded-lg text-base mt-4 md:mt-0 hover:bg-orange-500 hover:text-white transition-colors duration-300 ease-linear"><Link to={"/"}>Log Out</Link></button>
