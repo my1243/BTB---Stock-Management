@@ -29,7 +29,7 @@ const LineChart = (prop) => {
       };
   return (
     <>
-      <div className="h-[22rem] mx-8 bg-blue-200 rounded-xl p-4">
+      <div className="h-[24.5rem] bg-blue-200 rounded-xl p-4 mr-4">
         <Line
           data={data}
           options={{

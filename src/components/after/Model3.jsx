@@ -51,9 +51,8 @@ const Model3 = () => {
 
     return (
         <>
-        <Navbar1/>
-            <div className="flex flex-row bg-gray-100">
-                <div className="w-1/3 m-4 bg-blue-300 rounded-lg h-[87vh] sticky top-20 left-0">
+            <div className="flex flex-row max-h-[89vh] mr-2 rounded-lg bg-gray-100">
+                <div className="w-1/3 m-4 bg-blue-300 rounded-lg sticky top-20 left-0">
                         <div className="mx-4 my-4">
                             <form action="" onSubmit={handleSubmit}>
                                 <div>

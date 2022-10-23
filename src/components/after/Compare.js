@@ -33,11 +33,10 @@ const Compare = () => {
     
     return(
         <>
-            <Navbar1/>
-            <div className="flex p-4">
+            <div className="flex my-4 gap-4 max-w-[77vw]">
 
             {/* 11111111 */}
-                            <div className="w-1/3 mx-4 bg-blue-200 p-4 rounded-xl">
+                            <div className="w-1/3 bg-blue-200 p-4 rounded-xl">
         <form className="flex justify-center mb-4" onSubmit={handleInput1}>
           <input
             className="bg-gray-50 w-96 px-3 py-2 rounded-lg outline-none" value={com} onChange={(e) => setCom(e.target.value)}
@@ -64,7 +63,7 @@ const Compare = () => {
                     
             {/* 2222222 */}
 
-            <div className="w-1/3 mx-4 bg-blue-200 p-4 rounded-xl">
+            <div className="w-1/3 bg-blue-200 p-4 rounded-xl">
         <form className="flex justify-center mb-4" onSubmit={handleInput2}>
           <input
             className="bg-gray-50 w-96 px-3 py-2 rounded-lg outline-none" value={com} onChange={(e) => setCom(e.target.value)}
@@ -91,7 +90,7 @@ const Compare = () => {
 
       {/* 3333 */}
 
-      <div className="w-1/3 mx-4 bg-blue-200 p-4 rounded-xl">
+      <div className="w-1/3 bg-blue-200 p-4 rounded-xl">
         <form className="flex justify-center mb-4" onSubmit={handleInput3}>
           <input
             className="bg-gray-50 w-96 px-3 py-2 rounded-lg outline-none" value={com} onChange={(e) => setCom(e.target.value)}
