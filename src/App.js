@@ -15,6 +15,7 @@ import  Model3 from "./components/after/Model3";
 import Fourth from "./components/Home/Fourth";
 import Third from "./components/Home/Third";
 import Compare from "./components/after/Compare";
+import Editprofile from "./components/after/Editprofile"; 
 
 const App = () => {
 
@@ -40,6 +41,7 @@ const App = () => {
             {/* <Route path="/model" element={<Model3 />} /> */}
             {/* <Route path="/fourth" element={<Fourth />} />
             <Route path="/third" element={<Third />} /> */}
+            <Route path="/edit" element={<Editprofile />} />
 
           </Route>
         </Routes>
