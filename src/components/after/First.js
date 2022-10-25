@@ -2,8 +2,18 @@ import React from "react";
 const First = (props) => {
   return (
     <>
-        <h1 className="text-lg font-medium mb-2 text-slate-800 uppercase">Details</h1>
-        <div className="bg-gray-200 rounded-lg flex flex-col justify-evenly h-72">
+    <h1 className="text-lg font-medium mb-2 text-slate-800 uppercase">Details</h1>
+    {
+        !props.data.Name ? 
+        <>
+        <div className="bg-gray-200 p-4 rounded-lg flex flex-col justify-center h-72">
+            <p className="font-semibold text-center text-red-500">No data to show!! Sorry😞</p> 
+            <p className="font-semibold text-center text-red-500">Goto dashboard and search for any stocks.</p>
+        </div>
+        </>
+            :
+        <> 
+    <div className="bg-gray-200 rounded-lg flex flex-col justify-evenly h-72">
             <h1 className="text-lg font-semibold text-red-500 text-center">{props.data.Name}</h1>
             <div className="text-md px-2 font-medium text-slate-900 flex flex-row justify-between">
                 <h1>Market Cap</h1>
@@ -33,7 +43,9 @@ const First = (props) => {
                 <h1>EPS</h1>
                 <h3>{props.data.EPS}%</h3>
             </div>
-        </div>
+    </div>
+        </>
+    }
     </>
   );
 };

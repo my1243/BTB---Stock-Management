@@ -3,6 +3,7 @@ const router = express.Router();
 require("../db/conn");
 const User = require("../models/reg");
 const bcrypt = require("bcryptjs");
+const authenticate = require("../middlewares/Authenticate");
 
 router.get('/', (req, res) => {
     res.send("hello hiya router");
@@ -18,11 +19,16 @@ router.post('/signup', async (req, res) => {
     try {
         const userexist = await User.findOne({ email: email })
         if (userexist) {
-            return res.status(422).json({ error: "Email is already exist" });
-        }
+            return res.status(422).json({ error: "Email already exist" });
+        }else if (password != confimedpassword){
+            return res.status(422).json({Error:"Password and confirm passowrd do not match"});
+        }else{
         const user = new User({ fname, lname, email, phone, gender, password, confimedpassword });
-        await user.save();
-        res.status(201).json({ message: "data stored successfully" });
+        const data = await user.save();
+        if(data){
+            res.status(201).json({ message: "data stored successfully" });
+        }
+    }
     } catch (err) {
         console.log(err);
     }
@@ -41,12 +47,19 @@ router.post('/login', async (req, res) => {
 
         if (useremail) {
             const isMatch = await bcrypt.compare(password, useremail.password);
+            const token = await useremail.generateAuthToken();
+            console.log(token);
+
+            res.cookie("jwtoken", token,{
+                expires:new Date(Date.now() + 1000000),
+                httpOnly:true
+            })
 
             if (!isMatch) {
                 res.status(400).json({ error: "Invalid" });
             }
             else {
-                res.json({ message: "log in successfully" });
+                res.status(201).json({ message: "log in successfully" });
             }
         } else {
             res.status(400).json({ error: "Invalid details" });
@@ -57,5 +70,10 @@ router.post('/login', async (req, res) => {
     }
 }
 )
+
+router.get('/portfolio',authenticate,(req,res) => {
+    console.log("hello from about us");
+    res.send(req.rootUser);
+})
 
 module.exports = router;

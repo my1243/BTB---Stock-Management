@@ -77,7 +77,4 @@
   z-index: 2;
 }
 
-.swip
-{
-  z-index: 1;
-}
+.swiper.navigation.nextEl { color: red; }

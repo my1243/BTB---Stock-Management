@@ -2,7 +2,7 @@ import React from "react";
 import ReactTradingviewWidget from "react-tradingview-widget";
 
 const TradeView = (props) => {
-    const sys = "AAPL" || props.csys;
+    const sys = props.csys;
     return(
         <>
             <div className="px-4 py-2 rounded-xl shadow-xl h-[64vh] bg-white">

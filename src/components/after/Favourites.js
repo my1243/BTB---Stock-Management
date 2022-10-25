@@ -1,5 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "../../App.css";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -111,14 +112,17 @@ const Favourites = () => {
   return (
     <>
       {console.log(colorpicker())}
-      <div className="max-w-[80vw] rounded-3xl my-2 swip">
+      <div className="max-w-[80vw] rounded-3xl my-2 z-1">
         <Swiper
           slidesPerView={"5"}
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
           }}
-          navigation={true}
+          navigation={{
+            nextEl:".swiper.navigation.nextEl",
+          }}
+          nextEl={'.swiper-button-next'}
           modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper h-40"
         >

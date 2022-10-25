@@ -61,13 +61,14 @@ const postdata = async (ev) => {
             })
         });
         const data = await response.json();
-        if (data.status === 422 || !data) {
+        if (response.status === 422 || !data) {
             window.alert("Invalid data");
             console.log("Invalid data");
         } else {
             window.alert("Data stored successfully");
             console.log("data stored successfully");
-            window.location = "/portfolio";
+            setIsActive2(!isActive2);
+            setIsActive1(!isActive1);
         }
     }
 }

@@ -20,9 +20,6 @@ import Sidebar from "./components/after/Sidebar";
 import Home1 from "./components/after/Home1";
 
 const App = () => {
-
-
-
   return (
     <>
       <Router>
@@ -42,6 +39,7 @@ const App = () => {
             <Route path="/portfolio" element={<Home1/>} />
               <Route path="/portfolio/compare" element={<Compare/>} />
               <Route path="/portfolio/addStock" element={<Model3/>} />
+              <Route path="/portfolio/edit-profile" element={<Editprofile/>} />
          </Route>
           <Route
             element={
