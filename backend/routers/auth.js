@@ -71,8 +71,35 @@ router.post('/login', async (req, res) => {
 }
 )
 
+router.post('/favourites', async (req,res) => {
+    try{
+        const email = req.body.email;
+
+        const userEmail = await User.findOne({email: email});
+        if(userEmail) {
+            const sys = req.body.symbol;
+            var find = false;
+            userEmail.favourites.map((val,idx) => {
+                if(val.symbol == sys){
+                    find = true;     
+                }
+            })
+            if(find){
+                throw new Error("Symbol already added");
+            }
+            userEmail.favourites = userEmail.favourites.concat({symbol:sys});
+            const response = await userEmail.save();
+            if(response){
+                res.status(200).json({message:"Symbol added successfully!"});
+            }
+        }
+    }catch(err){
+        console.log(err);
+    }
+})
+
 router.get('/portfolio',authenticate,(req,res) => {
-    console.log("hello from about us");
+    console.log("hello from portfolio");
     res.send(req.rootUser);
 })
 

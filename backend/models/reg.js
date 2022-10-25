@@ -38,6 +38,14 @@ const userSchema = new mongoose.Schema({
                 required:true
             }
         }
+    ],
+    favourites : [
+        {
+            symbol : {
+                type:String,
+                required: true
+            }
+        }
     ]
 })
 
