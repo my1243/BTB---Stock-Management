@@ -98,6 +98,25 @@ router.post('/favourites', async (req,res) => {
     }
 })
 
+router.patch('/updateUser', async (req,res) => {
+    try{
+        const oldemail = req.body.oldemail;
+        const {fname,lname,email,phone,gender} = req.body;
+
+        const userFind = await User.findOneAndUpdate({email:oldemail},{fname,lname,email,phone,gender},{
+            new:true
+        });
+        if(userFind){
+                return res.status(200).json({message:"Success"});
+        }else{
+                return res.status(422).json({err:"not valid"});
+            }
+        
+    }catch(err){
+        console.log(err);
+    }
+})
+
 router.get('/portfolio',authenticate,(req,res) => {
     console.log("hello from portfolio");
     res.send(req.rootUser);
