@@ -9,7 +9,7 @@ const Second = () => {
             Get The Most Out Of Your Investments
           </h1>
           <div class="flex flex-col md:flex-row mt-12 gap-x-12">
-          <div className="relative z-50 overflow-hidden bg-gray-50 p-12 rounded-[2rem] md:w-2/5 shadow-lg flex flex-col items-start">
+          <div className="relative overflow-hidden bg-gray-50 p-12 rounded-[2rem] md:w-2/5 shadow-lg flex flex-col items-start">
             <div className="">
               <h2 class="sm:text-3xl text-2xl font-medium text-gray-900 mt-4 mb-4">
                 Unlimited Portfolio Accounts

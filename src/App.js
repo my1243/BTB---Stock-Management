@@ -65,7 +65,7 @@ const App = () => {
 
           </Route>
           <Route>
-          <Route path="/portfolio/set-email" element={<Email/>} />
+          <Route path="/forgot-password" element={<Email/>} />
           </Route>
         </Routes>
       </Router>

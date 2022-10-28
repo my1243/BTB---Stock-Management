@@ -26,7 +26,7 @@ const colorpicker = () => {
 };
 
 const Favourites = (props) => {
-    var obj = [{}];
+    var obj = [];
     const favitems = props.favitems;
     const getHighLow = async (sys) => {
         const url = `https://finnhub.io/api/v1/quote?symbol=${sys}&token=cddrh5qad3iag7bhufkgcddrh5qad3iag7bhufl0`
@@ -34,6 +34,7 @@ const Favourites = (props) => {
         const data = await res.json();
         console.log(data);
         obj.push(data);
+        console.log(obj);
     }
     useEffect(() => {
         favitems.map((val,idx) => {
@@ -58,8 +59,6 @@ const Favourites = (props) => {
           className="mySwiper h-40"
         >
           {favitems.map((value, idx) => {
-            console.log(value);
-            console.log(value.symbol);
             return (
               <SwiperSlide>
                 <div className="bg-white w-56 p-4 rounded-2xl">
