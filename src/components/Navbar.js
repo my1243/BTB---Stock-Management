@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 export default function Navbar() {
   let Links = [
@@ -10,7 +11,8 @@ export default function Navbar() {
 
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
-
+  const alert = useAlert();
+  
   const loginUser = async (ev) => {
     ev.preventDefault();
     const respon = await fetch('/login', {
@@ -25,9 +27,10 @@ export default function Navbar() {
     });
     const data = respon.json();
     if (respon.status === 400 || respon.status === 400 || !data) {
-      window.alert("Invalid details");
+        alert.error("Invalid Details");
     } else {
-      window.alert("Login successfully");
+        alert.success("Login successful");
+        setTimeout(2000);
       window.location = "/portfolio";
     }
   }
@@ -61,13 +64,14 @@ const postdata = async (ev) => {
             })
         });
         const data = await response.json();
-        if (data.status === 422 || !data) {
+        if (response.status === 422 || !data) {
             window.alert("Invalid data");
             console.log("Invalid data");
         } else {
             window.alert("Data stored successfully");
             console.log("data stored successfully");
-            window.location = "/portfolio";
+            setIsActive2(!isActive2);
+            setIsActive1(!isActive1);
         }
     }
 }
