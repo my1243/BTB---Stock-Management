@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 
 
 const Editprofile = () => {
+
     return (
         <>
             <div className="w-1/2 flex justify-center">
                 <form className="bg-yellow-200">
                     <div className="flex justify-center m-8">
-                        <img className="w-1/4 h-1/4 rounded-[50%]" src="avatar.jpg" alt="ggg" />
+                        <img className="w-1/5 h-1/5 rounded-[50%]" src="avatar.jpg" alt="ggg" />
                     </div>
                     <div className="flex flex-row -mb-8">
                         <div className="m-8">
