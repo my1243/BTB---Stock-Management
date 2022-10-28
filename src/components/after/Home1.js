@@ -7,7 +7,7 @@ const Home1 = (props) => {
         <>
         <section className="mr-2 px-4 py-2 bg-gray-200 rounded-lg">
             <Favourites/>
-            <TradeView csys = {props.findsym}/>
+            <TradeView emai = {props.user.email} csys = {props.sys}/>
         </section>
         </>
     )

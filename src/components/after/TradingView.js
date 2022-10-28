@@ -1,11 +1,15 @@
 import React from "react";
+import { useAlert } from "react-alert";
 import ReactTradingviewWidget from "react-tradingview-widget";
 
 const TradeView = (props) => {
-    const sys = "AAPL" || props.csys;
+    const sys = props.csys || "AAPL";
+    const emai = props.emai;
+
+    const alert = useAlert();
 
     const postData = async () => {
-        const email = "mihiryarra@gmail.com";
+        const email = emai;
         const symbol = sys;
         const res = await fetch("/favourites", {
             method:"POST",
@@ -18,8 +22,10 @@ const TradeView = (props) => {
         });
         const data = await res.json();
         if(!res.status === 200 || !data){
-            window.alert("symbol not saved");
+            alert.error(res);
+            // window.alert("symbol not saved");
         }else{
+            alert.success("Symbol added to favourites!");
             console.log("symbol saved.");
         }
     }

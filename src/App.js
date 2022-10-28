@@ -18,8 +18,11 @@ import Compare from "./components/after/Compare";
 import Editprofile from "./components/after/Editprofile"; 
 import Sidebar from "./components/after/Sidebar";
 import Home1 from "./components/after/Home1";
+import { useState } from "react";
 
 const App = () => {
+    const [sys,setsys] = useState("AAPL");
+    const [user,setuser] = useState({});
   return (
     <>
       <Router>
@@ -27,8 +30,8 @@ const App = () => {
         <Route element={
             <>
             <div className="grid grid-cols-5">
-                <Navbar1/>
-                <Sidebar/>
+                <Navbar1 setsys = {setsys} setuser = {setuser} />
+                <Sidebar sys = {sys}/>
                 <section className="col-span-4">
                     <Outlet/>
                 </section>
@@ -36,10 +39,10 @@ const App = () => {
             </>
         }
         >
-            <Route path="/portfolio" element={<Home1/>} />
+            <Route path="/portfolio" element={<Home1 sys={sys} user={user} />} />
               <Route path="/portfolio/compare" element={<Compare/>} />
               <Route path="/portfolio/addStock" element={<Model3/>} />
-              <Route path="/portfolio/edit-profile" element={<Editprofile/>} />
+              <Route path="/portfolio/edit-profile" element={<Editprofile user={user} />} />
          </Route>
           <Route
             element={
