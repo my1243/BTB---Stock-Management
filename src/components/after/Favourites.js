@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "../../App.css";
 
@@ -19,131 +19,60 @@ const colors = [
   "#f07167",
 ];
 
-var Obj = [
-  {
-    cmpname: "ONGC",
-    // cmpsym: "AAPL",
-    change: "+4.82%",
-    high: "139.70",
-    col: "bg-[#8ac926]",
-    low: "133.50",
-  },
-  {
-    cmpname: "Reliance",
-    // cmpsym: "AAPL",
-    change: "+1.62%",
-    high: "2,641.3",
-    col: "bg-[#ffb703]",
-    low: "2,582.2",
-  },
-  {
-    cmpname: "Adani",
-    // cmpsym: "AAPL",
-    change: "+1.19%",
-    high: "3,553.0",
-    col: "bg-[#ffafcc]",
-    low: "3,462.6",
-  },
-  {
-    cmpname: "TATA",
-    // cmpsym: "AAPL",
-    change: "-0.61%",
-    high: "3,419.0",
-    col: "bg-[#f6bd60]",
-    low: "3,381.2",
-  },
-  {
-    cmpname: "BATA",
-    // cmpsym: "AAPL",
-    change: "-0.12%",
-    high: "1,931.0",
-    col: "bg-[#fb8500]",
-    low: "1,884.0",
-  },
-  {
-    cmpname: "ICICI",
-    // cmpsym: "AAPL",
-    change: "+1.71%",
-    high: "877.25",
-    col: "bg-[#57cc99]",
-    low: "642.15",
-  },
-  {
-    cmpname: "Axis",
-    // cmpsym: "AAPL",
-    change: "+0.22%",
-    high: "762.00",
-    col: "bg-[#ffadad]",
-    low: "753.40",
-  },
-  {
-    cmpname: "Bajaj",
-    // cmpsym: "AAPL",
-    change: "-0.13%",
-    high: "7,343.0",
-    col: "bg-[#a2d2ff]",
-    low: "7,272.0",
-  },
-  {
-    cmpname: "SBI",
-    // cmpsym: "AAPL",
-    change: "+1.13%",
-    high: "531.80",
-    col: "bg-[#f07167]",
-    low: "525.15",
-  },
-  {
-    cmpname: "Nestle",
-    // cmpsym: "AAPL",
-    change: "-0.69%",
-    high: "19,756.4",
-    col: "bg-[#e9ff70]",
-    low: "19,413.7",
-  },
-];
-
 const colorpicker = () => {
   let idx = Math.floor(Math.random() * 9);
   const col = `bg-red-500`;
   return col;
 };
 
-const Favourites = () => {
+const Favourites = (props) => {
+    var obj = [{}];
+    const favitems = props.favitems;
+    const getHighLow = async (sys) => {
+        const url = `https://finnhub.io/api/v1/quote?symbol=${sys}&token=cddrh5qad3iag7bhufkgcddrh5qad3iag7bhufl0`
+        const res = await fetch(url);
+        const data = await res.json();
+        console.log(data);
+        obj.push(data);
+    }
+    useEffect(() => {
+        favitems.map((val,idx) => {
+            getHighLow(val.symbol);
+        })
+    },[]);
+
   return (
     <>
       {console.log(colorpicker())}
-      <div className="max-w-[80vw] rounded-3xl my-2 z-1">
+      {console.log(obj)}
+      { favitems ?
+       <div className="max-w-[80vw] rounded-3xl my-2 z-1">
         <Swiper
           slidesPerView={"5"}
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
           }}
-          navigation={{
-            nextEl:".swiper.navigation.nextEl",
-          }}
-          nextEl={'.swiper-button-next'}
+          navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper h-40"
         >
-          {Obj.map((value, idx) => {
+          {favitems.map((value, idx) => {
+            console.log(value);
+            console.log(value.symbol);
             return (
               <SwiperSlide>
                 <div className="bg-white w-56 p-4 rounded-2xl">
                   <div className="flex flex-row justify-between items-center">
                     <button
-                      className={`px-3 py-2 rounded-full w-24 font-medium ${value.col}`}
+                      className={`px-3 py-2 rounded-full w-24 font-medium`}
                     >
-                      {value.cmpname}
+                      {value.symbol}
                     </button>
                     <h3
-                      className={`font-medium ${
-                        value.change.charAt(0) == "+"
-                          ? "text-green-600"
-                          : "text-red-500"
-                      }`}
+                      className={`font-medium`}
                     >
-                      {value.change}
+                      change percent
                     </h3>
                   </div>
                   <div className="flex flex-row justify-around font-medium items-center mt-2">
@@ -151,13 +80,13 @@ const Favourites = () => {
                       <h1 className="text-green-600">
                         High <i class="fa-solid fa-arrow-up"></i>
                       </h1>
-                      <h3 className="text-center"> {value.high} </h3>
+                      <h3 className="text-center"> high </h3>
                     </div>
                     <div className="bg-blue-100 px-4 py-2 rounded-lg">
                       <h1 className="text-red-600">
                         Low <i class="fa-solid fa-arrow-down"></i>
                       </h1>
-                      <h3 className="text-center"> {value.low} </h3>
+                      <h3 className="text-center"> low </h3>
                     </div>
                   </div>
                 </div>
@@ -166,6 +95,8 @@ const Favourites = () => {
           })}
         </Swiper>
       </div>
+      : <p>No data!</p>
+      }
     </>
   );
 };
