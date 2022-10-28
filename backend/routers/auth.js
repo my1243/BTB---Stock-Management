@@ -94,6 +94,7 @@ router.post('/favourites', async (req,res) => {
             }
         }
     }catch(err){
+        res.status(422).json({message:"Symbol already added."});
         console.log(err);
     }
 })
