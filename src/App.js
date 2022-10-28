@@ -18,6 +18,8 @@ import Compare from "./components/after/Compare";
 import Editprofile from "./components/after/Editprofile"; 
 import Sidebar from "./components/after/Sidebar";
 import Home1 from "./components/after/Home1";
+import Viewprofile from "./components/after/Viewprofile";
+import Email from "./components/Email";
 import { useState } from "react";
 
 const App = () => {
@@ -43,6 +45,8 @@ const App = () => {
               <Route path="/portfolio/compare" element={<Compare/>} />
               <Route path="/portfolio/addStock" element={<Model3/>} />
               <Route path="/portfolio/edit-profile" element={<Editprofile user={user} />} />
+              <Route path="/portfolio/view-profile" element={<Viewprofile user={user} />}  />
+              
          </Route>
           <Route
             element={
@@ -59,6 +63,9 @@ const App = () => {
             <Route path="/third" element={<Third />} /> */}
             <Route path="/edit" element={<Editprofile />} />
 
+          </Route>
+          <Route>
+          <Route path="/portfolio/set-email" element={<Email/>} />
           </Route>
         </Routes>
       </Router>

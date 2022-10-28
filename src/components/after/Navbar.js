@@ -87,7 +87,7 @@ const Navbar1 = (props) => {
               {/* drop down items */}
 
               <div class="dropdown-content">
-                <Link to="/portfolio">View Profile</Link>
+                <Link to="/portfolio/view-profile">View Profile</Link>
                 <Link to="/portfolio/edit-profile">Edit Profile</Link>
                 <Link to="/">Logout</Link>
               </div>
