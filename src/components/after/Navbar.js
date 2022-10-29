@@ -5,9 +5,9 @@ const Navbar1 = (props) => {
   const [companySym, setCompanySym] = useState("");
 
   const [user, setuser] = useState({
-    fname:"",
-    lname:"",
-    email:""
+    fname: "",
+    lname: "",
+    email: ""
   });
   const callNavbar = async () => {
     try {
@@ -23,9 +23,9 @@ const Navbar1 = (props) => {
       const data = await (await res).json();
       props.setuser(data);
       setuser({
-        fname:data.fname,
-        lname:data.lname,
-        email:data.email
+        fname: data.fname,
+        lname: data.lname,
+        email: data.email
       })
       console.log(data);
 
