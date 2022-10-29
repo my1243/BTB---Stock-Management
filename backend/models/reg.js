@@ -41,10 +41,9 @@ const userSchema = new mongoose.Schema({
     ],
     favourites : [
         {
-            symbol : {
-                type:String,
-                required: true
-            }
+            type:String,
+            required: true
+            
         }
     ]
 })
