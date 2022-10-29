@@ -21,6 +21,7 @@ import Home1 from "./components/after/Home1";
 import Viewprofile from "./components/after/Viewprofile";
 import Email from "./components/Email";
 import { useState } from "react";
+import Company from "./components/Company";
 
 const App = () => {
     const [sys,setsys] = useState("AAPL");
@@ -66,6 +67,9 @@ const App = () => {
           </Route>
           <Route>
           <Route path="/forgot-password" element={<Email/>} />
+          </Route>
+          <Route>
+          <Route path="/company" element={<Company />} />
           </Route>
         </Routes>
       </Router>
