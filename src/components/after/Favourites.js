@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "../../App.css";
 
@@ -26,14 +26,14 @@ const colorpicker = () => {
 };
 
 const Favourites = (props) => {
-    var obj = [];
+    const [obj,setobj] = useState([{}]);
     const favitems = props.favitems;
     const getHighLow = async (sys) => {
         const url = `https://finnhub.io/api/v1/quote?symbol=${sys}&token=cddrh5qad3iag7bhufkgcddrh5qad3iag7bhufl0`
         const res = await fetch(url);
         const data = await res.json();
         console.log(data);
-        obj.push(data);
+        setobj([...obj,data]);
         console.log(obj);
     }
     useEffect(() => {
@@ -46,7 +46,8 @@ const Favourites = (props) => {
     <>
       {console.log(colorpicker())}
       {console.log(obj)}
-      { favitems ?
+      {console.log(obj)}
+      { obj.length > 0 ?
        <div className="max-w-[80vw] rounded-3xl my-2 z-1">
         <Swiper
           slidesPerView={"5"}
