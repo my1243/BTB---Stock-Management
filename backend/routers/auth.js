@@ -95,14 +95,14 @@ router.post("/favourites", async (req, res) => {
       const sys = req.body.symbol;
       var find = false;
       userEmail.favourites.map((val, idx) => {
-        if (val.symbol == sys) {
+        if (val == sys) {
           find = true;
         }
       });
       if (find) {
         throw new Error("Symbol already added");
       }
-      userEmail.favourites = userEmail.favourites.concat({ symbol: sys });
+      userEmail.favourites = userEmail.favourites.concat(sys);
       const response = await userEmail.save();
       if (response) {
         res.status(200).json({ message: "Symbol added successfully!" });
@@ -113,6 +113,20 @@ router.post("/favourites", async (req, res) => {
     console.log(err);
   }
 });
+
+router.patch("/favourites", async (req,res) => {
+    try{
+        const {email, symbol} = req.body;
+        const findUser = await User.findOneAndUpdate({email:email}, {$pull : {favourites : symbol}}, {new:true});
+        if(findUser){
+            res.status(200).json({message:"Removed from favorites"});
+        }else{
+            res.status(422).json({message:"Failed"});
+        }
+    }catch(err){
+        console.log(err);
+    }
+})
 
 router.patch("/updateUser", async (req, res) => {
   try {

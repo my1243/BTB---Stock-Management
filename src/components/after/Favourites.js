@@ -38,7 +38,7 @@ const Favourites = (props) => {
     }
     useEffect(() => {
         favitems.map((val,idx) => {
-            getHighLow(val.symbol);
+            getHighLow(val);
         })
     },[]);
 
@@ -66,7 +66,7 @@ const Favourites = (props) => {
                     <button
                       className={`px-3 py-2 rounded-full w-24 font-medium`}
                     >
-                      {value.symbol}
+                      {value}
                     </button>
                     <h3
                       className={`font-medium`}
