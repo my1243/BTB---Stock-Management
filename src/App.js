@@ -69,7 +69,7 @@ const App = () => {
           <Route path="/forgot-password" element={<Email/>} />
           </Route>
           <Route>
-          <Route path="/company" element={<Company />} />
+          <Route path="/company" element={<Company csys={sys} />} />
           </Route>
         </Routes>
       </Router>

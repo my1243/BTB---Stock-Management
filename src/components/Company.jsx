@@ -7,12 +7,12 @@ import { useEffect } from "react";
 import ReactTradingviewWidget from "react-tradingview-widget";
 
 const Company = (props) => {
-    // props.csys || "IBM"
-    const symbol = "AAPL";
+    
+    const symbol = props.csys || "IBM";
     const [user, setuser] = useState([]);
     useEffect(() => {
         const getuser = async () => {
-            const res = await fetch('https://www.alphavantage.co/query?function=OVERVIEW&symbol=AAPL&apikey=GEUNO2UYHPF6Q8X9');
+            const res = await fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=GEUNO2UYHPF6Q8X9`);
             setuser(await res.json());
             console.log(user);
         }
