@@ -4,6 +4,7 @@ import { useAlert } from "react-alert";
 import Navbar from "./Navbar";
 import Navbar1 from "./after/Navbar";
 import { useEffect } from "react";
+import ReactTradingviewWidget from "react-tradingview-widget";
 
 const Company = (props) => {
     // props.csys || "IBM"
@@ -322,14 +323,17 @@ const Company = (props) => {
                             <h5 className="text-xl font-semibold"> <i class="fa-solid fa-chart-column text-3xl mx-3"></i> Advanced Chart</h5>
                         </div>
 
-                        <div>
-                            {/* aiya chart aavse */}
+                        <div className="m-8 h-[400px]">
+                            <div className="h-[90%] rounded-xl overflow-hidden border-2 border-slate-600">
+                                <ReactTradingviewWidget hide_top_toolbar={true} symbol={user.Symbol} style="3" autosize />
+                            </div>
                         </div>
+                    
                     </>
                     :
-                    <div>
-                        loading
-                    </div>
+<div>
+    loading
+</div>
             }
         </>
     )
