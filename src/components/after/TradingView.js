@@ -11,7 +11,7 @@ const TradeView = (props) => {
     useEffect(() => {
         let chk = false;
         favitems.map((vl,idx) => {
-            if(vl == sys){
+            if(vl === sys){
                 chk = true;
             }
         })  

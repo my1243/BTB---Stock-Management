@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useAlert } from "react-alert";
-import { Link } from "react-router-dom";
-import Editprofile from "./Editprofile";
+import React from "react";
 
 const Viewprofile = (props) => {
 
-    const [userdata, setuserdata] = useState(props.user);
+    const userdata = props.user;
 
     return (
         <>
             <h1 className="text-xl font-bold tracking-wide border-l ml-4 pl-6 mt-4">View Profile</h1>
-            <form method="GET" className="flex items-center ml-4 mr-2 border-l">
+            <div className="flex items-center ml-4 mr-2 border-l">
                 <div className="w-1/2">
                     <div className="flex justify-center mx-4 my-4">
                         <img className="w-32 h-32 rounded-full" src="../avatar.jpg" alt="ggg" />
@@ -75,7 +72,7 @@ const Viewprofile = (props) => {
                 <div className="w-1/2">
                     <img className="rounded-lg" src="../view.jpg" alt="edit" />
                 </div>
-            </form>
+            </div>
         </>
     )
 }

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 require("../db/conn");
 const User = require("../models/reg");
+const Todo = require("../models/todo");
 const bcrypt = require("bcryptjs");
 const authenticate = require("../middlewares/Authenticate");
 
@@ -88,46 +89,54 @@ router.post("/login", async (req, res) => {
 
 router.post("/favourites", async (req, res) => {
   try {
-    const {email, symbol} = req.body;
+    const { email, symbol } = req.body;
 
-    const userEmail = await User.findOneAndUpdate({ email: email, favourites : {$ne : [symbol]}}, {$push : {favourites: symbol}}, {new:true});
+    const userEmail = await User.findOneAndUpdate(
+      { email: email, favourites: { $ne: [symbol] } },
+      { $push: { favourites: symbol } },
+      { new: true }
+    );
     if (userEmail) {
-    //   const sys = req.body.symbol;
-    //   var find = false;
-    //   userEmail.favourites.map((val, idx) => {
-        // if (val == sys) {
-        //   find = true;
-        // }
-    //   });
-    //   if (find) {
-        // throw new Error("Symbol already added");
-    //   }
-    //   userEmail.favourites = userEmail.favourites.concat(sys);
-    //   const response = await userEmail.save();
-    //   if (response) {
-        res.status(200).json({ message: "Symbol added successfully!" });
-    //   }
-    }else{
-        res.status(422).json({message:"Symbol already added"});
+      //   const sys = req.body.symbol;
+      //   var find = false;
+      //   userEmail.favourites.map((val, idx) => {
+      // if (val == sys) {
+      //   find = true;
+      // }
+      //   });
+      //   if (find) {
+      // throw new Error("Symbol already added");
+      //   }
+      //   userEmail.favourites = userEmail.favourites.concat(sys);
+      //   const response = await userEmail.save();
+      //   if (response) {
+      res.status(200).json({ message: "Symbol added successfully!" });
+      //   }
+    } else {
+      res.status(422).json({ message: "Symbol already added" });
     }
   } catch (err) {
     console.log(err);
   }
 });
 
-router.patch("/favourites", async (req,res) => {
-    try{
-        const {email, symbol} = req.body;
-        const findUser = await User.findOneAndUpdate({email:email}, {$pull : {favourites : symbol}}, {new:true});
-        if(findUser){
-            res.status(200).json({message:"Removed from favorites"});
-        }else{
-            res.status(422).json({message:"Failed"});
-        }
-    }catch(err){
-        console.log(err);
+router.patch("/favourites", async (req, res) => {
+  try {
+    const { email, symbol } = req.body;
+    const findUser = await User.findOneAndUpdate(
+      { email: email },
+      { $pull: { favourites: symbol } },
+      { new: true }
+    );
+    if (findUser) {
+      res.status(200).json({ message: "Removed from favorites" });
+    } else {
+      res.status(422).json({ message: "Failed" });
     }
-})
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 router.patch("/updateUser", async (req, res) => {
   try {
@@ -156,37 +165,66 @@ router.post("/user", async (req, res) => {
     const email = req.body.email;
     const findUser = await User.findOne({ email: email });
     if (findUser) {
-      res.status(200).json({message:"User Verified!"});
+      res.status(200).json({ message: "User Verified!" });
     } else {
-        res.status(422).json({message:"Invalid credentials"});
+      res.status(422).json({ message: "Invalid credentials" });
     }
   } catch (err) {
     console.log(err);
   }
 });
 
-router.patch("/fpassword", async(req,res) => {
-    try{
-        const email = req.body.email;
-        const password = req.body.newpassword;
-        console.log(password);
-        const hashp = await bcrypt.hash(password,10);
-        const hashcp = await bcrypt.hash(password,10);
-        
-        const findUser = await User.findOneAndUpdate({email:email},{$set: { password: hashp, confimedpassword: hashcp}}, {new:true});
-        if(findUser){
-            res.status(200).json({message:"Password updated successful"});
-        }else{
-            res.status(422).json({message:"password not updated"});
-        }
-    }catch(err){
-        console.log(err);
+router.patch("/fpassword", async (req, res) => {
+  try {
+    const email = req.body.email;
+    const password = req.body.newpassword;
+    console.log(password);
+    const hashp = await bcrypt.hash(password, 10);
+    const hashcp = await bcrypt.hash(password, 10);
+
+    const findUser = await User.findOneAndUpdate(
+      { email: email },
+      { $set: { password: hashp, confimedpassword: hashcp } },
+      { new: true }
+    );
+    if (findUser) {
+      res.status(200).json({ message: "Password updated successful" });
+    } else {
+      res.status(422).json({ message: "password not updated" });
     }
-})
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 router.get("/portfolio", authenticate, (req, res) => {
   console.log("hello from portfolio");
   res.send(req.rootUser);
 });
+
+router.post("/stocks", async (req, res) => {
+  const {email, sharename, quantity, DOP, rate, upperLimit, lowerLimit } = req.body;
+  console.log(sharename);
+  try{
+    const userFind = await Todo.findOneAndUpdate({email:email, "stocks.sharename" : { $ne : [sharename]}}, {$push : {stocks : {sharename,quantity,DOP,rate,upperLimit,lowerLimit}}}, {new:true});
+    if(userFind){
+        res.status(200).json({message:"stocks pushed"});
+    }else{
+        const newTodo = new Todo({email, stocks: {sharename,quantity,DOP,rate,upperLimit,lowerLimit}});
+        const data = await newTodo.save();
+        if(data){
+            res.status(200).json({message:"stocks pushed"});
+            
+        }else{
+            res.status(422).json({message:"Stocks addition failed"});
+        }
+    }
+}catch(err){console.log(err)};
+});
+
+router.get("/logout", (req,res) => {
+    res.clearCookie("jwtoken",{path: '/'});
+    res.status(200).send("user logout");
+})
 
 module.exports = router;

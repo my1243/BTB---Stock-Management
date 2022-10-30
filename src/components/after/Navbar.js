@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useAlert } from "react-alert";
 import { Link } from "react-router-dom";
 
 const Navbar1 = (props) => {
@@ -9,6 +10,29 @@ const Navbar1 = (props) => {
     lname: "",
     email: ""
   });
+
+  const alert = useAlert();
+  const logoutfn = async () => {
+    try{
+        const res = await fetch("/logout", {
+            method:"GET",
+            headers:{
+                "Content-Type":"application/json",
+                Accept:"application/json"
+            },
+            credentials:"include"
+        })
+        if(res.status === 200){
+            alert.success("Logout");
+            window.location="/";
+        }else{
+            alert.error("logout failed");
+        }
+    }catch(err){
+        console.log(err);
+    }
+  }
+
   const callNavbar = async () => {
     try {
       const res = fetch("/portfolio", {
@@ -89,7 +113,7 @@ const Navbar1 = (props) => {
               <div class="dropdown-content">
                 <Link to="/portfolio/view-profile">View Profile</Link>
                 <Link to="/portfolio/edit-profile">Edit Profile</Link>
-                <Link to="/">Logout</Link>
+                <Link onClick={logoutfn} to="/">Logout</Link>
               </div>
             </li>
           </div>

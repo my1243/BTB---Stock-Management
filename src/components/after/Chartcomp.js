@@ -11,24 +11,24 @@ const LineChart = (prop) => {
         datasets: [
           {
             label: "IBM",
-            data: prop.d1.map((val) => val),
+            data: prop.k1.map((val) => val.close),
             borderColor: "#000000",
           },
           {
             label: "APPLE",
-            data: prop.d2.map((val) => val),
+            data: prop.d2.map((val) => val.close),
             borderColor: "#ffb703",
           },
           {
             label: "ADOBE",
-            data: prop.d3.map((val) => val),
+            data: prop.d3.map((val) => val.close),
             borderColor: "#fafc45",
           },
         ],
       };
   return (
     <>
-      <div className="h-[24.5rem] bg-blue-200 rounded-xl p-4 mr-4">
+      <div className="h-[24.5rem] shadow-lg border-2 border-slate-600 bg-gray-100 rounded-xl p-4 mr-4">
         <Line
           data={data}
           options={{

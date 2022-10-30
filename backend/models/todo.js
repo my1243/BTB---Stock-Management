@@ -2,31 +2,39 @@
 const mongoose = require("mongoose");
 
 const todoSchema = new mongoose.Schema({
-    sharename : {
+  email: {
+    type: String,
+    required: true,
+  },
+  stocks: [
+    {
+      sharename: {
         type: String,
-        required : true
-    },
-    quantity : {
+        required: true,
+      },
+      quantity: {
         type: Number,
-        required : true
-    },
-    dateOfPurchase : {
+        required: true,
+      },
+      DOP: {
         type: String,
-        required : true
-    },
-    rate : {
+        required: true,
+      },
+      rate: {
         type: Number,
-        required : true
-    },
-    upperLimit : {
+        required: true,
+      },
+      upperLimit: {
         type: Number,
-        required : true
-    },
-    lowerLimit : {
+        required: true,
+      },
+      lowerLimit: {
         type: Number,
-        required : true
-    },    
-})
+        required: true,
+      },
+    },
+  ],
+});
 
 // todoSchema.pre("save", async function(next) {
 //     if(this.isModified("password")){
@@ -37,7 +45,6 @@ const todoSchema = new mongoose.Schema({
 //     }
 //     next();
 // } )
-
 
 const Todo = new mongoose.model("todoUser", todoSchema);
 
