@@ -70,6 +70,8 @@ const TradeView = (props) => {
 
     return(
         <>
+        {   
+            props.favitems ? 
             <div className="px-4 py-2 rounded-xl shadow-xl h-[64vh] bg-white">
             <div className="flex flex-row justify-between items-center">
                 <h1 className="mb-2 text-xl font-semibold">Stock Watchlist</h1>
@@ -79,6 +81,9 @@ const TradeView = (props) => {
                     <ReactTradingviewWidget hide_top_toolbar={true} symbol={sys} style="3" autosize/> 
                 </div>
             </div>
+            :
+            <p>loading...</p>
+        }
         </>
     )
 }

@@ -88,28 +88,29 @@ router.post("/login", async (req, res) => {
 
 router.post("/favourites", async (req, res) => {
   try {
-    const email = req.body.email;
+    const {email, symbol} = req.body;
 
-    const userEmail = await User.findOne({ email: email });
+    const userEmail = await User.findOneAndUpdate({ email: email, favourites : {$ne : [symbol]}}, {$push : {favourites: symbol}}, {new:true});
     if (userEmail) {
-      const sys = req.body.symbol;
-      var find = false;
-      userEmail.favourites.map((val, idx) => {
-        if (val == sys) {
-          find = true;
-        }
-      });
-      if (find) {
-        throw new Error("Symbol already added");
-      }
-      userEmail.favourites = userEmail.favourites.concat(sys);
-      const response = await userEmail.save();
-      if (response) {
+    //   const sys = req.body.symbol;
+    //   var find = false;
+    //   userEmail.favourites.map((val, idx) => {
+        // if (val == sys) {
+        //   find = true;
+        // }
+    //   });
+    //   if (find) {
+        // throw new Error("Symbol already added");
+    //   }
+    //   userEmail.favourites = userEmail.favourites.concat(sys);
+    //   const response = await userEmail.save();
+    //   if (response) {
         res.status(200).json({ message: "Symbol added successfully!" });
-      }
+    //   }
+    }else{
+        res.status(422).json({message:"Symbol already added"});
     }
   } catch (err) {
-    res.status(422).json({ message: "Symbol already added." });
     console.log(err);
   }
 });
