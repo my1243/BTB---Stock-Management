@@ -42,7 +42,7 @@ const App = () => {
             </>
         }
         >
-            <Route path="/portfolio" element={<Home1 sys={sys} user={user}/>} />
+            <Route path="/portfolio" element={<Home1 sys={sys} user={user} />} />
               <Route path="/portfolio/compare" element={<Compare/>} />
               <Route path="/portfolio/addStock" element={<Model3 useremail = {user.email} />} />
               <Route path="/portfolio/edit-profile" element={<Editprofile user={user} />} />
