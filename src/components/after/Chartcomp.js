@@ -10,19 +10,19 @@ const LineChart = (prop) => {
         labels: labels,
         datasets: [
           {
-            label: "IBM",
+            label: prop.c1,
             data: prop.k1.map((val) => val.close),
-            borderColor: "#000000",
+            borderColor: "#F72585",
           },
           {
-            label: "APPLE",
+            label: prop.c2,
             data: prop.d2.map((val) => val.close),
-            borderColor: "#ffb703",
+            borderColor: "#4361EE",
           },
           {
-            label: "ADOBE",
+            label: prop.c3,
             data: prop.d3.map((val) => val.close),
-            borderColor: "#fafc45",
+            borderColor: "#480C",
           },
         ],
       };
