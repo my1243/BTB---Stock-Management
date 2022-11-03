@@ -98,13 +98,13 @@ const Model3 = (props) => {
     { props.useremail.length > 0 ?
     <>
       <div className="flex flex-row max-h-[89vh] mr-2 rounded-lg bg-gray-100">
-        <div className="w-1/3 m-4 bg-blue-300 rounded-lg">
+        <div className="w-1/3 m-4 rounded-lg">
           <div className="mx-4 my-4">
             <form method="POST" onSubmit={handleSubmit}>
               <div>
                 <label
                   for="sharename"
-                  class="block text-left text-md font-medium text-neutral-600"
+                  class="block text-left text-md font-medium text-slate-900"
                 >
                   Share name :
                 </label>
@@ -114,14 +114,14 @@ const Model3 = (props) => {
                   onChange={handleInput}
                   name="sharename"
                   id="sharename"
-                  className="block w-full p-2 text-base placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg text-neutral-600 bg-gray-50 focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
+                  className="block w-full p-2 text-base placeholder-slate-600 transition duration-500 ease-in-out transform border border-gray-700 rounded-lg text-slate-900 bg-white focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
                   placeholder="sharename"
                 ></input>
               </div>
               <div>
                 <label
                   htmlFor="quantity"
-                  className="block text-left text-md font-medium text-neutral-600"
+                  className="block text-left text-md font-medium text-slate-900"
                 >
                   quantity :
                 </label>
@@ -131,14 +131,14 @@ const Model3 = (props) => {
                   onChange={handleInput}
                   name="quantity"
                   id="quantity"
-                  className="block w-full p-2 text-base placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg text-neutral-600 bg-gray-50 focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
+                  className="block w-full p-2 text-base placeholder-slate-600 transition duration-500 ease-in-out transform border border-gray-700 rounded-lg text-slate-900 bg-white focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
                   placeholder="quantity"
                 ></input>
               </div>
               <div>
                 <label
                   htmlFor="DateOfPurchase"
-                  className="block text-left text-md font-medium text-neutral-600"
+                  className="block text-left text-md font-medium text-slate-900"
                 >
                   Date Of Purchase :
                 </label>
@@ -148,14 +148,14 @@ const Model3 = (props) => {
                   onChange={handleInput}
                   name="DOP"
                   id="DOP"
-                  className="block w-full p-2 text-gray-300 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
+                  className="block w-full p-2 text-slate-900 placeholder-slate-600 transition duration-500 ease-in-out transform border border-gray-700 rounded-lg bg-white focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
                   placeholder="dd/mm/yy"
                 ></input>
               </div>
               <div>
                 <label
                   htmlFor="rate"
-                  className="block text-left text-md font-medium text-neutral-600"
+                  className="block text-left text-md font-medium text-slate-900"
                 >
                   rate :{" "}
                 </label>
@@ -165,14 +165,14 @@ const Model3 = (props) => {
                   onChange={handleInput}
                   name="rate"
                   id="rate"
-                  className="block w-full p-2 text-base placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg text-neutral-600 bg-gray-50 focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
+                  className="block w-full p-2 text-base placeholder-slate-600 transition duration-500 ease-in-out transform border border-gray-700 rounded-lg text-slate-900 bg-white focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
                   placeholder="rate"
                 ></input>
               </div>
               <div>
                 <label
                   htmlFor="upperLimit"
-                  className="block text-left text-md font-medium text-neutral-600"
+                  className="block text-left text-md font-medium text-slate-900"
                 >
                   Upper Limit :
                 </label>
@@ -182,14 +182,14 @@ const Model3 = (props) => {
                   onChange={handleInput}
                   name="upperLimit"
                   id="upperLimit"
-                  className="block w-full p-2 text-base placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg text-neutral-600 bg-gray-50 focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
+                  className="block w-full p-2 text-base placeholder-slate-600 transition duration-500 ease-in-out transform border border-gray-700 rounded-lg text-slate-900 bg-white focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
                   placeholder="upperLimit"
                 ></input>
               </div>
               <div>
                 <label
                   htmlFor="lowerLimit"
-                  className="block text-left text-md font-medium text-neutral-600"
+                  className="block text-left text-md font-medium text-slate-900"
                 >
                   Lower Limit :
                 </label>
@@ -199,14 +199,14 @@ const Model3 = (props) => {
                   onChange={handleInput}
                   name="lowerLimit"
                   id="lowerLimit"
-                  className="block w-full p-2 text-base placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg text-neutral-600 bg-gray-50 focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
+                  className="block w-full p-2 text-base placeholder-slate-600 transition duration-500 ease-in-out transform border border-gray-700 rounded-lg text-slate-900 bg-white focus:outline-none focus:border-transparent focus:ring-1 focus:ring-slate-600 mt-1 mb-3"
                   placeholder="lowerLimit"
                 ></input>
               </div>
               <div className="text-center">
                 <button
                   type="submit"
-                  className="my-8 rounded-md hover:bg-blue-700 hover:text-black bg-black text-white py-3 w-full text-xl"
+                  className="my-8 rounded-md hover:bg-blue-700 hover:text-white bg-sky-200 text-black py-3 w-full text-xl"
                 >
                   ADD!
                 </button>
@@ -230,7 +230,7 @@ const Model3 = (props) => {
               record.map((val, idx) => {
                 return (
                   <>
-                    <tr className="text-center h-8 odd:bg-white text-slate-600 even:bg-slate-100 border-y hover:font-semibold cursor-pointer">
+                    <tr className="text-center h-8 odd:bg-white text-slate-600 even:bg-slate-100 border border-slate-600 hover:font-semibold cursor-pointer">
                       <td>{idx + 1}</td>
                       <td className="uppercase">{val.sharename}</td>
                       <td>{val.quantity}</td>

@@ -10,6 +10,18 @@ const Navbar1 = (props) => {
     lname: "",
     email: ""
   });
+  const [disp,setdisp] = useState(true);
+  const [record,setrecord] = useState([]);
+  const searchRes = async () => {
+    const url = `https://financialmodelingprep.com/api/v3/search?query=${companySym}&limit=5&exchange=NASDAQ&apikey=5554d3c48e281de05d7628236db1a3ba`;
+    const res = await fetch(url);
+    const data = await res.json();
+    setrecord(data);
+  }
+
+  useEffect(() => {
+    searchRes();
+  },[companySym]);
 
   const alert = useAlert();
   const logoutfn = async () => {
@@ -70,6 +82,7 @@ const Navbar1 = (props) => {
     event.preventDefault();
     console.log(companySym);
     props.setsys(companySym);
+    setCompanySym("");
   };
 
   return (
@@ -82,7 +95,7 @@ const Navbar1 = (props) => {
           <span class="ml-3 text-xl">Stock Decode</span>
             </Link>
           </div>
-          <div>
+          <div className="relative">
             <form className="" onSubmit={handleInputs}>
               <input
                 type={"search"}
@@ -92,6 +105,20 @@ const Navbar1 = (props) => {
                 placeholder="&#128269; Search for stock and more..."
               />
             </form>
+            <div className="absolute top-10 w-96 bg-white z-50 shadow-xl rounded-lg">
+            {record.length > 0 && companySym && disp && 
+                record.map((val,idx) => {
+                    return(
+                        <React.Fragment key={idx}>
+                            <div onClick={() => {props.setsys(val.symbol); setCompanySym(val.name); setdisp(false)}} className="cursor-pointer flex justify-between p-2 first:bg-gray-200 hover:bg-gray-200">
+                                <h1>{val.name}</h1>
+                                <h1>{val.symbol}</h1>
+                            </div>
+                        </React.Fragment>
+                    )
+                }) 
+            }
+            </div>
           </div>
           <div className="flex flex-row items-center justify-center">
             <div className="h-12 w-12 rounded-full overflow-hidden m-2">
@@ -110,6 +137,7 @@ const Navbar1 = (props) => {
               {/* drop down items */}
 
               <div class="dropdown-content">
+                <Link to="/portfolio">Dashboard</Link>
                 <Link to="/portfolio/view-profile">View Profile</Link>
                 <Link to="/portfolio/edit-profile">Edit Profile</Link>
                 <Link onClick={logoutfn} to="/">Logout</Link>
