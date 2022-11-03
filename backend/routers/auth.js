@@ -205,10 +205,13 @@ router.get("/portfolio", authenticate, (req, res) => {
 router.post("/stocks", async (req, res) => {
   const { email, sharename, quantity, DOP, rate, upperLimit, lowerLimit } =
     req.body;
-  console.log(sharename);
+    console.log(email);
   try {
     const user = User.findOne({ email: email });
     if (user) {
+        if(!sharename || !quantity || !DOP || !rate || !upperLimit || !lowerLimit){
+            res.status(422).json({message:"Please enter all fields"});
+        }
       const userFind = await Todo.findOneAndUpdate(
         {
           email: email,
@@ -243,15 +246,15 @@ router.post("/stocks", async (req, res) => {
   }
 });
 
-router.get("/stocks", async (req,res) => {
+router.post("/sstocks", async (req,res) => {
     const email = req.body.email;
     console.log(email);
     try{
-        const userFind = await User.findOne({email:email});
+        const userFind = await Todo.findOne({email:email});
         if(userFind){
-            res.status(200).send(userFind.stocks);
+            res.status(200).json({message:userFind.stocks});
         }else{
-            res.status(422).send("user not found");
+            res.status(422).json("user not found");
         }
     }catch(err){
         console.log(err);

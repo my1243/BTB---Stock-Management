@@ -68,7 +68,7 @@ const Favourites = (props) => {
                 <div className="bg-white w-56 p-4 rounded-2xl">
                   <div className="flex flex-row justify-between items-center">
                     <button
-                      className={`px-3 py-2 rounded-full w-24 font-medium ${colorpicker()}`}
+                      className={`px-3 py-2 rounded-full w-24 font-medium bg-[#ffaf07] text-center ${colorpicker()}`}
                     >
                       {favitems[idx]}
                     </button>
