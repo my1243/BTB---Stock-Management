@@ -31,7 +31,16 @@ const First = (props) => {
             <h1 className="text-lg font-semibold text-red-500 text-center">{details.Name}</h1>
             <div className="text-md px-2 font-medium text-slate-900 flex flex-row justify-between">
                 <h1>Market Cap</h1>
-                <h3>{details.MarketCapitalization}</h3>
+                <h3>{details.MarketCapitalization.substring(
+                    0,
+                    details.MarketCapitalization.length - 7
+                  )}
+                  .
+                  {details.MarketCapitalization.substring(
+                    details.MarketCapitalization.length - 7,
+                    details.MarketCapitalization.length - 5
+                  )}
+                  Cr</h3>
             </div>
             <div className="text-md px-2 font-medium text-slate-900 flex flex-row justify-between">
                 <h1>52 week Range</h1>
@@ -43,11 +52,25 @@ const First = (props) => {
             </div>
             <div className="text-md px-2 font-medium text-slate-900 flex flex-row justify-between">
                 <h1>Revenue(TTM)</h1>
-                <h3>{details.RevenueTTM}</h3>
+                <h3>{details.RevenueTTM.substring(0, details.RevenueTTM.length - 7)}.
+                  {details.RevenueTTM.substring(
+                    details.RevenueTTM.length - 7,
+                    details.RevenueTTM.length - 5
+                  )}
+                  Cr</h3>
             </div>
             <div className="text-md px-2 font-medium text-slate-900 flex flex-row justify-between">
                 <h1>Gross Profit(TTM)</h1>
-                <h3>{details.GrossProfitTTM}</h3>
+                <h3>{details.GrossProfitTTM.substring(
+                    0,
+                    details.GrossProfitTTM.length - 7
+                  )}
+                  .
+                  {details.GrossProfitTTM.substring(
+                    details.GrossProfitTTM.length - 7,
+                    details.GrossProfitTTM.length - 5
+                  )}
+                  Cr</h3>
             </div>
             <div className="text-md px-2 font-medium text-slate-900 flex flex-row justify-between">
                 <h1>PE Ratio</h1>
