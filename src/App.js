@@ -67,9 +67,7 @@ const App = () => {
           </Route>
           <Route>
           <Route path="/forgot-password" element={<Email/>} />
-          </Route>
-          <Route>
-          <Route path="/company" element={<Company csys={sys} />} />
+          <Route path="/portfolio/company" element={<Company csys={sys} setuser={setuser} setsys={setsys} />} />
           </Route>
         </Routes>
       </Router>

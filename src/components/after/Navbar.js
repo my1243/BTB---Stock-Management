@@ -35,7 +35,7 @@ const Navbar1 = (props) => {
 
   const callNavbar = async () => {
     try {
-      const res = fetch("/portfolio", {
+      const res = await fetch("/portfolio", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const Navbar1 = (props) => {
         credentials: "include",
       });
 
-      const data = await (await res).json();
+      const data = await res.json();
       props.setuser(data);
       setuser({
         fname: data.fname,

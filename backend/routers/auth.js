@@ -203,28 +203,95 @@ router.get("/portfolio", authenticate, (req, res) => {
 });
 
 router.post("/stocks", async (req, res) => {
-  const {email, sharename, quantity, DOP, rate, upperLimit, lowerLimit } = req.body;
+  const { email, sharename, quantity, DOP, rate, upperLimit, lowerLimit } =
+    req.body;
   console.log(sharename);
-  try{
-    const userFind = await Todo.findOneAndUpdate({email:email, "stocks.sharename" : { $ne : [sharename]}}, {$push : {stocks : {sharename,quantity,DOP,rate,upperLimit,lowerLimit}}}, {new:true});
-    if(userFind){
-        res.status(200).json({message:"stocks pushed"});
-    }else{
-        const newTodo = new Todo({email, stocks: {sharename,quantity,DOP,rate,upperLimit,lowerLimit}});
-        const data = await newTodo.save();
-        if(data){
-            res.status(200).json({message:"stocks pushed"});
-            
-        }else{
-            res.status(422).json({message:"Stocks addition failed"});
-        }
+  try {
+    const user = User.findOne({ email: email });
+    if (user) {
+      const userFind = await Todo.findOneAndUpdate(
+        {
+          email: email,
+          stocks: { $not: { $elemMatch: { sharename: sharename } } },
+        },
+        {
+          $push: {
+            stocks: { sharename, quantity, DOP, rate, upperLimit, lowerLimit },
+          },
+        },
+        { new: true }
+      );
+      if (userFind) {
+        res.status(200).json({ message: "stocks pushed" });
+      }else{
+        res.status(422).json({message:"Stocks addition failed"});
+      }
+    } else {
+      const newTodo = new Todo({
+        email,
+        stocks: { sharename, quantity, DOP, rate, upperLimit, lowerLimit },
+      });
+      const data = await newTodo.save();
+      if (data) {
+        res.status(200).json({ message: "stocks pushed" });
+      } else {
+        res.status(422).json({ message: "Stocks addition failed" });
+      }
     }
-}catch(err){console.log(err)};
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-router.get("/logout", (req,res) => {
-    res.clearCookie("jwtoken",{path: '/'});
-    res.status(200).send("user logout");
+router.get("/stocks", async (req,res) => {
+    const email = req.body.email;
+    console.log(email);
+    try{
+        const userFind = await User.findOne({email:email});
+        if(userFind){
+            res.status(200).send(userFind.stocks);
+        }else{
+            res.status(422).send("user not found");
+        }
+    }catch(err){
+        console.log(err);
+    }
 })
+
+router.post("/destocks", async (req, res) => {
+  const { email, sharename, quantity, DOP, rate, upperLimit, lowerLimit } =
+    req.body;
+  console.log(sharename);
+  try {
+    const user = User.findOne({ email: email });
+    if (user) {
+      const userFind = await Todo.findOneAndUpdate(
+        {
+          email: email,
+          stocks: { $elemMatch: { sharename: sharename } },
+        },
+        {
+          $pull: {
+            stocks: { sharename, quantity, DOP, rate, upperLimit, lowerLimit },
+          },
+        },
+        { new: true }
+      );
+      if (userFind) {
+        res.status(200).json({ message: "stock deleted" });
+      }
+      else{
+        res.status(422).json({message:"Stocks not removed"});
+      }
+    } 
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/logout", (req, res) => {
+  res.clearCookie("jwtoken", { path: "/" });
+  res.status(200).send("user logout");
+});
 
 module.exports = router;

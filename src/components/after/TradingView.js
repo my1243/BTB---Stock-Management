@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
+import { Link } from "react-router-dom";
 import ReactTradingviewWidget from "react-tradingview-widget";
 
 const TradeView = (props) => {
@@ -75,7 +76,10 @@ const TradeView = (props) => {
             <div className="px-4 py-2 rounded-xl shadow-xl h-[64vh] bg-white">
             <div className="flex flex-row justify-between items-center">
                 <h1 className="mb-2 text-xl font-semibold">Stock Watchlist</h1>
+                <div>
+                <Link className="mr-2 text-md text-blue-700 hover:text-red-700 hover:underline" to="/portfolio/company">view more...</Link>
                 <button onClick={() => {isFavourite ? patchData() : postData()}} className={`w-8 h-8 my-1 mx-2 bg-gray-200 rounded-full transition-all duration-150 ease-in ${isFavourite ? 'text-red-500 hover:text-black' : 'text-black hover:text-red-500'}`}><i class="fa-solid fa-heart"></i></button>
+                </div>
             </div>
                 <div className="h-[90%] rounded-xl overflow-hidden border-2 border-slate-600">
                     <ReactTradingviewWidget hide_top_toolbar={true} symbol={sys} style="3" autosize/> 

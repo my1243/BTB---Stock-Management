@@ -131,7 +131,7 @@ const Compare = () => {
             </div>
 
       {/* end */}
-            { (data1 && data2 && data3) ? 
+            { (data1.length > 30 && data2.length > 30 && data3.length > 30) ? 
             <div>
                 <LineChart k1={data1} d2={data2} d3={data3}/>               
             </div>

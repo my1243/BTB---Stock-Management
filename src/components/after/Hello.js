@@ -9,7 +9,7 @@ const Hello = () => {
         <div className="flex flex-col">
           <Link className="font-medium rounded-lg bg-blue-100 hover:bg-blue-300 mb-2 py-1 text-slate-900 text-left px-2" to="/portfolio/addStock"><button><i class="fa-solid fa-square-plus"></i> Stock Entry</button></Link>
           <Link className="font-medium rounded-lg bg-blue-100 hover:bg-blue-300 mb-2 py-1 text-slate-900 text-left px-2" to="/portfolio/compare"><button><i class="fa-solid fa-code-compare"></i> Compare Stocks</button></Link>
-          <Link className="font-medium rounded-lg bg-blue-100 hover:bg-blue-300 mb-2 py-1 text-slate-900 text-left px-2" to="/portfolio"><button><i class="fa-solid fa-bookmark"></i> Favourites</button></Link>
+          <Link className="font-medium rounded-lg bg-blue-100 hover:bg-blue-300 mb-2 py-1 text-slate-900 text-left px-2" to="/portfolio/company"><button><i class="fa-solid fa-building"></i> Company Lookup</button></Link>
         </div>
       </div>
     </>

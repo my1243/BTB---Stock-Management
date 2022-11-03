@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useAlert } from "react-alert";
 import Navbar1 from "./Navbar";
@@ -37,8 +37,10 @@ const Model3 = () => {
             })
         })
         const data = await res.json();
-        if(res.status(200)){
+        if(res.status === 200){
             alert.success("Stock data added.");
+            setrecord((e) => [...e,user]);
+            setuser({ sharename: "", quantity: "", DOP: "", rate: "", upperLimit: "", lowerLimit: "" });
         }else{
             alert.error("Push failed");
         }
@@ -60,12 +62,34 @@ const Model3 = () => {
     //     });
     //     setitem(upitem);
     // }
+    const callStocks = async () => {
+        const email = "mihiryarra@gmail.com";
+        try{
+            const res = await fetch("/stocks", {
+                method:"GET",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    email
+                })
+            })
+            const data = await res.json();
+            setrecord((e) => [...e,...data]);
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        callStocks();
+    },[]);
 
 
     return (
         <>
             <div className="flex flex-row max-h-[89vh] mr-2 rounded-lg bg-gray-100">
-                <div className="w-1/3 m-4 bg-blue-300 rounded-lg sticky top-20 left-0">
+                <div className="w-1/3 m-4 bg-blue-300 rounded-lg">
                         <div className="mx-4 my-4">
                             <form method="POST" onSubmit={handleSubmit}>
                                 <div>
@@ -118,82 +142,35 @@ const Model3 = () => {
                             </form>
                         </div>
                 </div>
-
-
-
-
-
-
-
-                <div className="mx-4 w-2/3">
-                    {
-                        record.map((curr,idx) => {
-                            const { sharename, quantity, DateOfPurchase, rate, upperLimit, lowerLimit } = curr;
-                            return (
-                                <div className="my-4 bg-slate-300  border-2 border-slate-600 rounded-xl overflow-hidden">
-                                    <div className="sm:mx-20 mx-10 flex flex-row">
-                                        <div key={idx} className="my-4 mx-2">
-                                            <div>
-                                                <label htmlFor="sharename" className="block text-left text-md font-medium text-neutral-600">Share name</label>
-                                            </div>
-                                            <div className="text-center mt-1">
-                                                {sharename}
-                                            </div>
-
-                                        </div>
-                                        <div key={idx} className="my-4 mx-5">
-                                            <div>
-                                                <label htmlFor="quantity" className="block text-left text-md font-medium text-neutral-600">quantity
-                                                </label>
-                                            </div>
-                                            <div className="text-center mt-1">
-                                                {quantity}
-                                            </div>
-
-                                        </div>
-                                        <div key={idx} className="my-4 mx-5">
-                                            <div>
-                                                <label htmlFor="DateOfPurchase" className="block text-left text-md font-medium text-neutral-600">Date of purchase</label>
-                                            </div>
-                                            <div className="text-center mt-1">
-                                                {DateOfPurchase}
-                                            </div>
-                                        </div>
-                                        <div key={idx} className="my-4 mx-5">
-                                            <div>
-                                                <label htmlFor="rate" className="block text-left text-md font-medium text-neutral-600">rate </label>
-                                            </div>
-                                            <div className="text-center mt-1">
-                                                {rate}
-                                            </div>
-
-                                        </div>
-
-                                        <div key={idx} className="my-4 mx-5">
-                                            <div>
-                                                <label htmlFor="upperLimit" className="block text-left text-md font-medium text-neutral-600">upperLimit</label>
-                                            </div>
-                                            <div className="text-center mt-1">
-                                                {upperLimit}
-                                            </div>
-
-                                        </div>
-
-                                        <div key={idx} className="my-4 mx-5">
-                                            <div>
-                                                <label htmlFor="lowerLimit" className="block text-left text-md font-medium text-neutral-600">lowerLimit </label>
-                                            </div>
-                                            <div className="text-center mt-1">
-                                                {lowerLimit}
-                                            </div>
-                                        </div>
-                                    </div>
+                <div className="w-2/3 my-4 mr-4">
+                    <div className="flex border border-black bg-blue-300 justify-evenly font-semibold text-xl">
+                        <h1>Sr No.</h1>
+                        <h1>Share Name</h1>
+                        <h1>Quantity</h1>
+                        <h1>Date Of Purchase</h1>
+                        <h1>Rate</h1>
+                        {/* <h1>Delete</h1> */}
+                    </div>
+                    { 
+                        record.length > 0 ?
+                    record.map((val,idx) => {
+                        return(
+                            <>
+                                <div className="flex border border-gray-600 odd:bg-white even:bg-slate-500 justify-evenly p-2">
+                                    <h1>{idx+1}</h1>
+                                    <h1>{val.sharename}</h1>
+                                    <h1>{val.quantity}</h1>
+                                    <h1>{val.DOP}</h1>
+                                    <h1>{val.rate}</h1>
+                                    {/* <h1><i class="fa-solid fa-trash hover:text-red-500"></i></h1> */}
                                 </div>
-                            )
-                        }
+                            </>
                         )
+                    }) :
+                    <p>no data available. Add some stocks.</p>
                     }
                 </div>
+
             </div>
         </>
     )
