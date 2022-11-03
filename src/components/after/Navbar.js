@@ -78,7 +78,7 @@ const Navbar1 = (props) => {
         <div className="flex flex-row justify-between px-4 items-center ">
           <div>
             <Link to="/portfolio" class="flex title-font font-bold items-center">
-            <img src="./logo.jpeg" className="w-10 h-10"></img>
+            <img src="../logo.jpeg" className="w-10 h-10"></img>
           <span class="ml-3 text-xl">Stock Decode</span>
             </Link>
           </div>
