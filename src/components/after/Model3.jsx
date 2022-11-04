@@ -59,9 +59,28 @@ const Model3 = (props) => {
     }
   };
 
-  const handleDel = (idx) => {
-    record.splice(idx,1);
-    setrecord(record);
+  const handleDel = async (idx) => {
+    console.log("hello");
+    const email = props.useremail;
+    const {sharename, quantity, DOP, rate, upperLimit, lowerLimit } = record[idx];
+    const res = await fetch("/destocks", {
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            email, sharename, quantity, DOP, rate, upperLimit, lowerLimit
+        })
+    })
+
+    if(res.status === 200){
+        record.splice(idx,1);
+        setrecord(() => [...record]);
+        alert.success("Stock Removed");
+    }else{
+        alert.error("Deletion Failed");
+    }
+    // console.log(record);
   }
 
   const callStocks = async () => {
@@ -214,7 +233,7 @@ const Model3 = (props) => {
             </form>
           </div>
         </div>
-        <table className="table w-2/3 my-4 mr-4 rounded-md overflow-hidden table-auto">
+        <table className="w-2/3 my-4 mr-4 rounded-md overflow-hidden table-auto">
           <thead>
             <tr className="bg-black text-white font-semibold h-12">
               <th>Sr No.</th>
@@ -230,13 +249,13 @@ const Model3 = (props) => {
               record.map((val, idx) => {
                 return (
                   <>
-                    <tr className="text-center h-8 odd:bg-white text-slate-600 even:bg-slate-100 border border-slate-600 hover:font-semibold cursor-pointer">
+                    <tr className="text-center odd:bg-white text-slate-600 even:bg-slate-100 border border-slate-600 hover:font-semibold cursor-pointer">
                       <td>{idx + 1}</td>
                       <td className="uppercase">{val.sharename}</td>
                       <td>{val.quantity}</td>
                       <td>{val.DOP}</td>
                       <td>{val.rate}</td>
-                      <td><i class="fa-solid fa-trash hover:text-red-500"></i></td>
+                      <td><i onClick={() => handleDel(idx)} class="fa-solid fa-trash hover:text-red-500"></i></td>
                     </tr>
                   </>
                 );
@@ -244,7 +263,7 @@ const Model3 = (props) => {
             ) : (
               <tr>no data available. Add some stocks.</tr>
             )}
-            <td colSpan={6} className="h-1 bg-black"></td>
+            <tr><td colSpan={6} className="h-1 bg-black"></td></tr>
           </tbody>
         </table>
       </div> 
