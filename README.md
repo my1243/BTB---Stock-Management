@@ -1,9 +1,9 @@
 
 # Stock-Management
 
-The intention to make this project is to spreade awareness for 
+The intention to make this project is to spread awareness for 
  stock-market to share holders or investors. To make this project
- more attractive and colourfull we are using REACT App
+ more attractive and colourful we are using REACT App
   as a frontend, Node js as a backend, mondoDB as a 
   database and Tailwind as a css. We also tried to make website responsive.
 
